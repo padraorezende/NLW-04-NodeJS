@@ -40,23 +40,19 @@ export class SendMailController {
             user_id: user.id,
             link: process.env.URL_MAIL
         }
-        
-        console.log("aqui");
-        
-        
-        const surveyAlreadyExists = await surveysRepository.findOne({
-            where:[{user_id: user.id}, {value: null}],
-            relations:["user", "survey"],
+
+
+        const surveyAlreadyExists = await surveysUsersRepository.findOne({
+            where: [{ user_id: user.id }, { value: null }],
+            relations: ["user", "survey"],
         });
 
-        console.log("passei aqui");
+        if (surveyAlreadyExists) {
 
-        if(surveyAlreadyExists){
             await SendMailService.execute(email, survey.title, variables, npsPath);
             return response.json(surveyAlreadyExists);
-        }
 
-        console.log("onde estou");
+        }
 
 
         const surveyUser = surveysUsersRepository.create({
