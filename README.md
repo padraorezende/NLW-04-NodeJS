@@ -1,6 +1,5 @@
 <h1 align="center">
-  <img alt="NLW" src=".github/nlw.jpg" width="50px">
-  <h1 align="center">NPS-NLW</h1>
+  <img alt="NLW" src=".github/nlw.jpg" width="150px">
 </h1>
 
 <p align="center">
